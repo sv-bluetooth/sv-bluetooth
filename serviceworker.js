@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["bulb.js","f8c1366a9ece8ddaec0e06da9b62a36d"],["discover.js","98f2f70fe460ef7082c57fb1c8952a19"],["images/icon.png","a7660976e7655e24886e14794044836d"],["index.html","e626b44ade9c79439b686661139b1b5e"],["manifest.json","e53794a2d8da30fa8c85eb0f64a62d4a"],["styles.css","33f7b1ea5264bc808629a9759b91f418"]];
+var precacheConfig = [["bulb.js","f8c1366a9ece8ddaec0e06da9b62a36d"],["discover.js","98f2f70fe460ef7082c57fb1c8952a19"],["images/icon.png","a7660976e7655e24886e14794044836d"],["index.html","cd0ae5bc36a50f38791081f8550ce49a"],["manifest.json","e53794a2d8da30fa8c85eb0f64a62d4a"],["styles.css","33f7b1ea5264bc808629a9759b91f418"]];
 var cacheName = 'sw-precache-v2-web-lightbulb-' + (self.registration ? self.registration.scope : '');
 
 
