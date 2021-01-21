@@ -70,12 +70,11 @@ function onButtonClick() {
     return '[' + supportedProperties.join(', ') + ']';
   }
   
-
 function connect() {
     console.log('Requesting Bluetooth Device...');
     navigator.bluetooth.requestDevice(
         {
-            filters: [{ services: [] }]
+            filters: [{ services: [0xffe5] }]
         })
         .then(device => {
             console.log('> Found ' + device.name);
@@ -85,11 +84,11 @@ function connect() {
         })
         .then(server => {
             console.log('Getting Service 0xffe5 - Light control...');
-            return server.getPrimaryService();
+            return server.getPrimaryService(0xffe5);
         })
         .then(service => {
             console.log('Getting Characteristic 0xffe9 - Light control...');
-            return service.getCharacteristic();
+            return service.getCharacteristic(0xffe9);
         })
         .then(characteristic => {
             console.log('All ready!');
