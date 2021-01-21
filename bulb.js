@@ -20,7 +20,7 @@ function onDisconnected() {
 
 function onButtonClick() {
     // Validate services UUID entered by user first.
-    let optionalServices = document.querySelector('#optionalServices').value
+    let optionalServices = document.querySelector('#optionalServices').classList.add('hidden');
       .split(/, ?/).map(s => s.startsWith('0x') ? parseInt(s) : s)
       .filter(s => s && BluetoothUUID.getService);
   
@@ -69,7 +69,7 @@ function onButtonClick() {
     }
     return '[' + supportedProperties.join(', ') + ']';
   }
-  
+
 function connect() {
     console.log('Requesting Bluetooth Device...');
     navigator.bluetooth.requestDevice(
