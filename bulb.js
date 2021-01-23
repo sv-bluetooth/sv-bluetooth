@@ -18,63 +18,13 @@ function onDisconnected() {
     document.querySelector('.power-button').classList.add('hidden');
 }
 
-function onButtonClick() {
-    // Validate services UUID entered by user first.
-    let optionalServices = document.querySelector('#optionalServices').classList.add('hidden');
-      .split(/, ?/).map(s => s.startsWith('0x') ? parseInt(s) : s)
-      .filter(s => s && BluetoothUUID.getService);
-  
-    log('Requesting any Bluetooth Device...');
-    navigator.bluetooth.requestDevice({
-     // filters: [...] <- Prefer filters to save energy & show relevant devices.
-        acceptAllDevices: true,
-        optionalServices: optionalServices})
-    .then(device => {
-      log('Connecting to GATT Server...');
-      return device.gatt.connect();
-    })
-    .then(server => {
-      // Note that we could also get all services that match a specific UUID by
-      // passing it to getPrimaryServices().
-      log('Getting Services...');
-      return server.getPrimaryServices();
-    })
-    .then(services => {
-      log('Getting Characteristics...');
-      let queue = Promise.resolve();
-      services.forEach(service => {
-        queue = queue.then(_ => service.getCharacteristics().then(characteristics => {
-          log('> Service: ' + service.uuid);
-          characteristics.forEach(characteristic => {
-            log('>> Characteristic: ' + characteristic.uuid + ' ' +
-                getSupportedProperties(characteristic));
-          });
-        }));
-      });
-      return queue;
-    })
-    .catch(error => {
-      log('Argh! ' + error);
-    });
-  }
-  
-  /* Utils */
-  
-  function getSupportedProperties(characteristic) {
-    let supportedProperties = [];
-    for (const p in characteristic.properties) {
-      if (characteristic.properties[p] === true) {
-        supportedProperties.push(p.toUpperCase());
-      }
-    }
-    return '[' + supportedProperties.join(', ') + ']';
-  }
+
 
 function connect() {
     console.log('Requesting Bluetooth Device...');
     navigator.bluetooth.requestDevice(
         {
-            filters: [{ services: [0xffe5] }]
+            filters: [{ services: [0x2800] }]
         })
         .then(device => {
             console.log('> Found ' + device.name);
@@ -84,11 +34,11 @@ function connect() {
         })
         .then(server => {
             console.log('Getting Service 0xffe5 - Light control...');
-            return server.getPrimaryService(0xffe5);
+            return server.getPrimaryService(0x2800);
         })
         .then(service => {
             console.log('Getting Characteristic 0xffe9 - Light control...');
-            return service.getCharacteristic(0xffe9);
+            return service.getCharacteristic(0x2803);
         })
         .then(characteristic => {
             console.log('All ready!');
