@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Magic Blue</title>
+    <title>SmartViewMD Welch Allyn</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -20,15 +20,19 @@
 
         <main class="mdl-layout__content">
 
-            <h3><i>SmartView MD (Stage1)</i></h3>
+            <h3><i>SmartView MD (Stage1g)</i></h3>
 
             <button onclick="connect()" class="connect-button mdl-button mdl-js-button mdl-button--raised mdl-button--green">
                 <i class="material-icons">bluetooth</i> Connect
             </button>
 
+            <button onclick="getRandomNumber()"  style="background:#a0ffa0">
+                <i class="material-icons">lightbulb_outline</i> Get Random Number
+            </button>
+
             <div class="power-button hidden">
-                <button onclick="togglePower()" class="mdl-button mdl-js-button mdl-button--fab mdl-button--raised mdl-js-ripple-effect">
-                    <i class="material-icons">lightbulb_outline</i>
+                <button onclick="sendAccountID()" class="connect-button mdl-button mdl-js-button mdl-button--raised mdl-button--green">
+                    <i class="material-icons">lightbulb_outline</i> Send Account ID
                 </button>
             </div>
 
